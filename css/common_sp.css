@@ -1,0 +1,508 @@
+@charset "utf-8";
+
+.inner {
+  padding: 0 1.25rem;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.site-header .inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem;
+  position: relative;
+}
+
+.logo img {
+  width: 3.25rem;
+  height: auto;
+}
+
+.logo span {
+  top: 0.4rem;
+  font-size: 1.25rem;
+}
+
+.menu-wrapper {
+  display: block;
+}
+
+.site-header .contact-btn {
+  display: none;
+}
+
+.main-nav {
+  display: flex !important;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 7rem 1.5rem 3rem;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: center;
+  text-align: center;
+  overflow: auto;
+  transition: right 0.35s ease, opacity 0.35s ease;
+  opacity: 0;
+}
+
+.main-nav::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+/* --- ハンバーガーメニュー関連 --- */
+
+#menu-btn-check {
+  display: none;
+}
+
+.menu-btn {
+  display: block;
+  position: fixed;
+  z-index: 30;
+  top: 1.35rem;
+  right: 1.1rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  height: 0.125rem;
+  background-color: var(--ink);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.menu-btn span:nth-child(1) {
+  top: 0;
+}
+
+.menu-btn span:nth-child(2) {
+  top: 0.55rem;
+}
+
+.menu-btn span:nth-child(3) {
+  top: 1.1rem;
+}
+
+#menu-btn-check ~ .main-nav a {
+  display: inline-block;
+  align-self: center;
+  padding: 0.25rem 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.25s ease, text-shadow 0.25s ease;
+  font-size: 1.125rem;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  border-bottom-color: transparent;
+}
+
+#menu-btn-check:checked ~ .menu-btn span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 0.725rem;
+}
+
+#menu-btn-check:checked ~ .menu-btn span:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-btn-check:checked ~ .menu-btn span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 0.725rem;
+}
+
+#menu-btn-check:checked ~ .main-nav {
+  right: 0;
+  opacity: 1;
+}
+
+#menu-btn-check:checked ~ .main-nav::before {
+  opacity: 1;
+}
+
+#menu-btn-check:checked ~ .main-nav a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#menu-btn-check:checked ~ .main-nav .nav-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section {
+  padding: 3.75rem 0 4.5rem;
+}
+
+.section .inner {
+  padding: 0 1.25rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  letter-spacing: 0.14em;
+  margin: 0 0 2.75rem;
+  text-align: center;
+}
+
+.section-title span {
+  font-size: 0.95rem;
+  display: block;
+  margin-top: 0.35rem;
+}
+
+/* -- 2. メインビジュアル -- */
+
+.hero {
+  height: 26rem;
+  margin-top: 4.25rem;
+}
+
+.hero-visual {
+  position: static;
+  width: 100%;
+  height: 100%;
+}
+.scrolldown {
+  display: inline-flex;
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1rem; /* align with green background on SP */
+  transform: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+.scrolldown .label {
+  writing-mode: vertical-rl;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+}
+.scrolldown .line {
+  height: 2.75rem;
+}
+
+/* -- 3. コンセプト -- */
+
+#concept {
+  padding-top: 3rem;
+}
+.hero-text p {
+  font-size: 1.6rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+#concept .text-block p {
+  font-size: 1rem;
+}
+
+/* -- 4. サービス (.flow-grid) -- */
+
+.flow-grid {
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.flow-grid article {
+  padding: 1.35rem 1.25rem 2.3rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 11.75rem;
+}
+
+.flow-grid h3 {
+  font-size: 1.25rem;
+  margin: 0;
+  padding-bottom: 0.65rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.flow-grid p {
+  text-align: left;
+  margin: 0;
+  line-height: 1.7;
+}
+.flow-grid p + p {
+  margin-top: 0.7rem;
+}
+
+.service .note {
+  width: calc(100% - 2.5rem); /* align with inner padding on SP */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* -- 5. 会社概要 (.company-panel) -- */
+
+.company-panel {
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.company-text {
+  max-width: none;
+  min-height: auto;
+  display: block;
+  padding-top: 0;
+}
+.company-photo {
+  width: 100%;
+  height: 18.5rem;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+.company-photo img {
+  object-position: center 42%;
+}
+.company-table {
+  width: 100%;
+}
+.company-row {
+  grid-template-columns: 38% 62%;
+}
+
+/* -- 6. 事例紹介 (.works-stack) -- */
+
+.works-slider {
+  width: calc(100% - 2.5rem); /* align with other section padding */
+  padding: 0;
+  max-width: 100%;
+  height: 90vh; /* almost full-screen height on mobile */
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.works-slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.04));
+  pointer-events: none;
+}
+.works-slider .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: block;
+  will-change: opacity;
+  animation: worksSlideSp 20s ease-in-out infinite;
+}
+.works-slider .slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.works-slider .slide:nth-child(3) img{
+  object-position: 70% center;
+}
+.works-slider .slide.after {
+  animation-delay: 5s;
+}
+.works-slider .slide:nth-child(3) { animation-delay: 10s; }
+.works-slider .slide:nth-child(4) { animation-delay: 15s; }
+
+.works-slider .badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.52);
+  border-radius: 999px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.works-slider .badge.before {
+  animation: badgeBeforeSp 20s ease-in-out infinite;
+}
+.works-slider .badge.after {
+  left: 0.6rem;
+  animation: badgeAfterSp 20s ease-in-out infinite;
+}
+
+@keyframes badgeBeforeSp {
+  0% { opacity: 0; }
+  3% { opacity: 1; }
+  23% { opacity: 1; }
+  27% { opacity: 0; }
+  50% { opacity: 0; }
+  53% { opacity: 1; }
+  73% { opacity: 1; }
+  77% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes badgeAfterSp {
+  0% { opacity: 0; }
+  24% { opacity: 0; }
+  25% { opacity: 1; }
+  48% { opacity: 1; }
+  52% { opacity: 0; }
+  75% { opacity: 0; }
+  78% { opacity: 1; }
+  98% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes worksSlideSp {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  24% { opacity: 1; }
+  30% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* -- 7. FAQ/お問い合わせ -- */
+
+.faq-list,
+.contact-form {
+  width: 100%;
+}
+.faq-list summary h4 {
+  white-space: normal;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.faq-list summary {
+  padding: 1rem 2.15rem 0.9rem 0.75rem;
+  gap: 0.7rem;
+}
+.faq-list details p {
+  padding: 1rem 0.75rem 1.1rem 0.75rem;
+  font-size: 0.98rem;
+  text-align: left;
+}
+
+.faq-list summary::before {
+  display: none;
+}
+.faq-list summary::after {
+  width: 0.5rem;
+  height: 0.5rem;
+  right: 0.9rem;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+}
+
+.contact-form {
+  gap: 1rem;
+}
+
+.field label {
+  margin-bottom: 0.5rem;
+}
+
+.field textarea {
+  min-height: 12rem;
+  height: 12rem;
+}
+
+.form-actions {
+  margin-top: 0.5rem;
+}
+
+/* -- サンクスページ -- */
+
+.thanks-card {
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.thanks-actions {
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.thanks-actions .btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* -- 8. アクセス -- */
+
+.map-wrap iframe {
+  width: 100%;
+  height: 18rem;
+  margin: 0 auto 1.5rem;
+}
+
+.access-info {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.access-map iframe {
+  width: 100% !important; 
+  height: 450px;
+}
+
+/* -- 9. バナー -- */
+
+.banners {
+  padding-top: 2.5rem;
+}
+.banners .inner {
+  gap: 1.75rem;
+}
+.banner-item {
+  width: 100%;
+  height: 9.5rem;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* -- 10. フッター -- */
+
+.site-footer {
+  padding: 1.5rem 1rem;
+}
+.site-footer nav {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  align-items: center;
+}
+
+.site-footer nav a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  line-height: 1;
+}
